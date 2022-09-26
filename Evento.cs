@@ -9,31 +9,40 @@ public class Evento
         PostiOccupati = 0;
     }
 
+    public string titolo;
     public string Titolo {
-        get { return Titolo; }
+        get => titolo;
         set
         {
-            if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("Titolo non può essere vuoto");
-            Titolo = value;
-        }
-    }
-    public DateTime Data {
-        get { return Data; }
-        set
-        {
-            DateTime now = DateTime.Now;
-            if (Data < now ) throw new ArgumentException("Non puoi inserire una data passata");
-            Data = value;
+
+            if (value == "") 
+            {
+                throw new Exception("Titolo non può essere vuoto");
+            }
+            
+            titolo = value;
         }
     }
 
+    public DateTime data;
+    public DateTime Data {
+        get => data;
+        set
+        {
+            DateTime now = DateTime.Now;
+            if (value < now ) throw new ArgumentException("Non puoi inserire una data passata");
+            data = value;
+        }
+    }
+
+    public int maxPosti;
     public int MaxPosti {
-        get { return MaxPosti; }
+        get => maxPosti;
         private set
         {
             
-            if (MaxPosti <= 0) throw new ArgumentException("I posti devono essere più di 0");
-            MaxPosti = value;
+            if (maxPosti < 0) throw new ArgumentException("I posti devono essere più di 0");
+            maxPosti = value;
         }
     }
 
@@ -55,6 +64,8 @@ public class Evento
         DateTime now = DateTime.Now;
         if (Data < now) throw new ArgumentException("L'evento è concluso");
         if (PostiOccupati - n < 0) throw new ArgumentException("Non ci sono così tanti posti da disdire");
+
+        PostiOccupati -= n;
     }
 
     public override string ToString()
