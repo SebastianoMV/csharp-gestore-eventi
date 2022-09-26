@@ -60,6 +60,7 @@ public class ProgrammaEventi
             count++;
         }
         Eventi.RemoveRange(0, count);
+        Console.WriteLine("Eventi svuotati");
     }
 
     public string StampaEventi()

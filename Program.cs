@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Eventi");
+//Conferenza newConferenza = new Conferenza("Conferenza di Star Wars", DateTime.ParseExact("25/11/2022", "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture), 1000, "SebastianoMV", 30.00);
 
 Console.WriteLine("Come si chiama il tuo Programma degli eventi?");
 string nomeProgramma = Console.ReadLine();
@@ -9,8 +10,18 @@ int numeroEventi = Int32.Parse(Console.ReadLine());
 
 for (int i = 0; i < numeroEventi; i++)
 {
-    Evento newEvento = NuovoEvento();
-    newProgramma.Eventi.Add(newEvento);
+    Console.WriteLine("Vuoi inserire un evento o una conferenza? [0/1] \n 0. Evento \n 1. Conferenza");
+    if(Console.ReadLine() == "0")
+    {
+        Evento newEvento = NuovoEvento();
+        newProgramma.Eventi.Add(newEvento);
+    }
+    else
+    {
+        Conferenza newConferenza = NuovaConferenza();
+        newProgramma.Eventi.Add(newConferenza);
+    }
+    
 }
 
 Console.WriteLine($"Numero di eventi del programma: {newProgramma.ContaEventi()}");
@@ -21,6 +32,7 @@ DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", System.Glo
 
 StampaListaData(newProgramma.ListaEventiInData(data));
 
+//newProgramma.SvuotaEventi();
 
 
 
@@ -62,6 +74,54 @@ Evento NuovoEvento()
     return newEvento;
 }
 
+Conferenza NuovaConferenza(){
+    Conferenza newConferenza = null;
+
+    bool flag = false;
+    while (!flag)
+    {
+        try
+        {
+            Console.WriteLine("Nome conferenza");
+
+            string newNome = Console.ReadLine();
+
+            Console.WriteLine("Data evento [dd/MM/yyyy");
+
+            DateTime newData = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Inserisci i posti a disposizione");
+
+            int newPosti = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Inserisci il relatore");
+
+            string newRelatore = Console.ReadLine();
+
+            Console.WriteLine("Inserisci il prezzo");
+
+            double newPrezzo = Convert.ToDouble(Console.ReadLine());
+
+            newConferenza = new Conferenza(newNome, newData, newPosti, newRelatore, newPrezzo);
+
+            flag = true;
+        }
+        catch (Exception e)
+        {
+
+            Console.WriteLine(e.Message);
+
+            flag = false;
+            continue;
+        }
+
+    }
+
+    return newConferenza;
+}
+
+
+
 void StampaListaData(List<Evento> list)
 {
     foreach (Evento evento in list)
@@ -69,7 +129,6 @@ void StampaListaData(List<Evento> list)
         Console.WriteLine(evento.ToString());
     }
 }
-
 
 
 //PRENOTAZIONE E DISDETTA POSTI 

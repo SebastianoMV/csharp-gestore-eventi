@@ -9,7 +9,7 @@ public class Evento
         PostiOccupati = 0;
     }
 
-    public string titolo;
+    private string titolo;
     public string Titolo {
         get => titolo;
         set
@@ -22,7 +22,7 @@ public class Evento
         }
     }
 
-    public DateTime data;
+    private DateTime data;
     public DateTime Data {
         get => data;
         set
@@ -33,7 +33,7 @@ public class Evento
         }
     }
 
-    public int maxPosti;
+    private int maxPosti;
     public int MaxPosti {
         get => maxPosti;
         private set
