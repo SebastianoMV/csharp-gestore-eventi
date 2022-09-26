@@ -50,4 +50,16 @@ public class Evento
         
     }
 
+    public void DisdiciPosti(int n)
+    {
+        DateTime now = DateTime.Now;
+        if (Data < now) throw new ArgumentException("L'evento è concluso");
+        if (PostiOccupati - n < 0) throw new ArgumentException("Non ci sono così tanti posti da disdire");
+    }
+
+    public override string ToString()
+    {
+        string s = Data.ToString("dd/MM/yyyy") + " - " + Titolo;
+        return s;
+    }
 }
