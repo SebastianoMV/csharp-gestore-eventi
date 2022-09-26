@@ -49,4 +49,5 @@ public class Evento
         PostiOccupati += n;
         
     }
+
 }
