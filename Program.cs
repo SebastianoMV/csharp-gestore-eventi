@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Eventi");
 
+//MILESTONE 2
+
 Console.WriteLine("Inserisci un nuovo evento!");
 
 Console.WriteLine("Nome evento");
@@ -19,8 +21,6 @@ int newPosti = Int32.Parse(Console.ReadLine());
 Evento newEvento = new Evento(newNome, newData, newPosti);
 
 Console.WriteLine(newEvento.ToString());
-
-bool flag = false;
 
 Console.WriteLine("Vuoi prenotare dei posti? [si/no]");
 
@@ -47,3 +47,7 @@ if (risposta == "si")
     Console.WriteLine($"Posti prenotati:  {newEvento.PostiOccupati}");
     Console.WriteLine($"Posti liberi: {newEvento.MaxPosti - newEvento.PostiOccupati}");
 }
+
+
+
+
