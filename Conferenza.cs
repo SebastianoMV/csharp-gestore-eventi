@@ -5,8 +5,28 @@
 
 public class Conferenza : Evento
 {
-    string Relatore { get; set; }  
-    double Prezzo { get; set; }
+    string _relatore;
+    string Relatore
+    {
+        get => _relatore;
+        set
+        {
+            if (value == "") throw new Exception("Relatore non può essere vuoto");
+
+
+            _relatore = value;
+        }
+    }
+    double _prezzo;
+    double Prezzo 
+    {   get=> _prezzo;
+        set 
+        {
+            if (value < 0) throw new Exception("Prezzo non può essere inferiore a zero");
+
+            _prezzo = value;
+        } 
+    }
     public Conferenza(string titolo, DateTime data, int maxPosti, string relatore, double prezzo) : base(titolo, data, maxPosti)
     {
         Relatore = relatore;

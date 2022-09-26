@@ -31,6 +31,7 @@ Console.WriteLine("Cerca eventi per data");
 DateTime data = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
 StampaListaData(newProgramma.ListaEventiInData(data));
+newProgramma.Eventi.Count();
 
 //newProgramma.SvuotaEventi();
 
@@ -100,7 +101,22 @@ Conferenza NuovaConferenza(){
 
             Console.WriteLine("Inserisci il prezzo");
 
-            double newPrezzo = Convert.ToDouble(Console.ReadLine());
+            double newPrezzo = 0;
+            bool flagPrezzo = false;
+            while (!flagPrezzo)
+            {
+                try
+                {
+                    newPrezzo = Double.Parse(Console.ReadLine());
+                    flagPrezzo = true;
+                }
+                catch(FormatException)
+                {
+                    Console.WriteLine("OOOOOOOOOOOOOOOOH");
+                }
+                
+            }
+             
 
             newConferenza = new Conferenza(newNome, newData, newPosti, newRelatore, newPrezzo);
 

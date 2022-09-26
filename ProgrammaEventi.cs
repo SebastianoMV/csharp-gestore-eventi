@@ -54,12 +54,8 @@ public class ProgrammaEventi
 
     public void SvuotaEventi()
     {
-        int count = 0;
-        foreach(Evento evento in Eventi)
-        {
-            count++;
-        }
-        Eventi.RemoveRange(0, count);
+        
+        Eventi.RemoveRange(0, Eventi.Count());
         Console.WriteLine("Eventi svuotati");
     }
 
