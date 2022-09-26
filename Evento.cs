@@ -15,10 +15,8 @@ public class Evento
         set
         {
 
-            if (value == "") 
-            {
-                throw new Exception("Titolo non può essere vuoto");
-            }
+            if (value == "") throw new Exception("Titolo non può essere vuoto");
+            
             
             titolo = value;
         }
@@ -30,7 +28,7 @@ public class Evento
         set
         {
             DateTime now = DateTime.Now;
-            if (value < now ) throw new ArgumentException("Non puoi inserire una data passata");
+            if (value < now ) throw new Exception("Non puoi inserire una data passata");
             data = value;
         }
     }
@@ -51,9 +49,9 @@ public class Evento
     public void PrenotaPosti(int n)
     {
         DateTime now = DateTime.Now;
-        if (Data < now) throw new ArgumentException("L'evento è concluso");
-        if (PostiOccupati == MaxPosti) throw new ArgumentException("Non ci sono più posti disponibili");
-        if (PostiOccupati + n > MaxPosti) throw new ArgumentException("Non ci sono abbastanza posti liberi");
+        if (Data < now) throw new Exception("L'evento è concluso");
+        if (PostiOccupati == MaxPosti) throw new Exception("Non ci sono più posti disponibili");
+        if (PostiOccupati + n > MaxPosti) throw new Exception("Non ci sono abbastanza posti liberi");
 
         PostiOccupati += n;
         
@@ -62,8 +60,8 @@ public class Evento
     public void DisdiciPosti(int n)
     {
         DateTime now = DateTime.Now;
-        if (Data < now) throw new ArgumentException("L'evento è concluso");
-        if (PostiOccupati - n < 0) throw new ArgumentException("Non ci sono così tanti posti da disdire");
+        if (Data < now) throw new Exception("L'evento è concluso");
+        if (PostiOccupati - n < 0) throw new Exception("Non ci sono così tanti posti da disdire");
 
         PostiOccupati -= n;
     }
